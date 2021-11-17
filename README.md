@@ -1,7 +1,10 @@
 # Wandpixel
 
 The fun may begin. Let's write some nice animations for the wandpixel.
-Get started:
+
+**Please open pull requests and add new draw scripts**
+
+## Get started
 
 ```bash
 # install the python3
