@@ -37,6 +37,8 @@ if __name__ == "__main__":
     print('please specify a script')
     sys.exit(1)
   draw_module = importlib.import_module(sys.argv[1])
+  if hasattr(draw_module, 'FPS'):
+    FPS = draw_module.FPS
 
   pygame.init() 
   fps_clock = pygame.time.Clock()

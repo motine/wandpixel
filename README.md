@@ -19,6 +19,7 @@ cp snowflake.py yourscript.py
 vim yourscript.py
 # use strip's method setPixel(x, y, color_triple) to set the color of a pixel
 # make sure to call strip.show() at the end of the draw method
+# if you want to override the number of frames per second, specify a constant called FPS in your script
 ./engine.py yourscript
 ```
 
