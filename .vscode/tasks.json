@@ -6,7 +6,7 @@
     {
       "label": "snake",
       "type": "shell",
-      "command": "python3 engine.py snake",
+      "command": "python3 start.py snake",
       "problemMatcher": [],
       "group": {
         "kind": "build",
@@ -16,7 +16,7 @@
     {
       "label": "snowflake",
       "type": "shell",
-      "command": "python3 engine.py snowflake",
+      "command": "python3 start.py snowflake",
       "problemMatcher": []
     }
   ]

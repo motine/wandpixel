@@ -1,4 +1,4 @@
-from engine import PIXEL_WIDTH, PIXEL_HEIGHT
+from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
 import random
 
 FPS = 10

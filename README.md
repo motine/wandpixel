@@ -12,7 +12,7 @@ The fun may begin. Let's write some nice animations for the wandpixel.
 python3 -m pip install -U pygame --user
 
 # now run the engine with the demo script
-./engine.py snowflake
+./start.py snowflake
 
 # to start your own script:
 cp snowflake.py yourscript.py
@@ -20,7 +20,7 @@ vim yourscript.py
 # use strip's method set_pixel([x, y], color_triple) to set the color of a pixel
 # make sure to call strip.show() at the end of the draw method
 # if you want to override the number of frames per second, specify a constant called FPS in your script
-./engine.py yourscript
+./start.py yourscript
 ```
 
 If you have the actual LED matrix as seen at Tom's house, please also run the following on the raspberry pi:
@@ -29,7 +29,7 @@ If you have the actual LED matrix as seen at Tom's house, please also run the fo
 sudo apt install libsdl2-dev
 sudo python3 -m pip install rpi_ws281x
 touch USE_LEDS # if this file is present, we will not spin up a window, but rather use the actual matrix
-sudo ./engine.py snowflake
+sudo ./start.py snowflake
 ```
 
 

@@ -1,4 +1,4 @@
-from engine import PIXEL_WIDTH, PIXEL_HEIGHT
+from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
 flakes = [(1, 8.0), (5, 0.0)] # column, top
 
 def draw(strip):
