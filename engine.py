@@ -20,9 +20,9 @@ class Strip:
   def __init__(self):
     self.pixel_colors = [ [(0, 0, 0)]*PIXEL_WIDTH for i in range(PIXEL_HEIGHT)]
 
-  def set_pixel(self, x, y, color):
-    # this would use set_pixelColor for the real pixel
-    self.pixel_colors[y][x] = color
+  def set_pixel(self, coordinate_or_index, color):
+    # this would use for the real pixel
+    self.pixel_colors[coordinate_or_index[1]][coordinate_or_index[0]] = color
 
   def show(self):
     surface.fill(BACKGROUND_COLOR)
