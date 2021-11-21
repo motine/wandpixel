@@ -24,6 +24,12 @@
       "type": "shell",
       "command": "python3 start.py image",
       "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "python3 start.py test",
+      "problemMatcher": []
     }
   ]
 }
