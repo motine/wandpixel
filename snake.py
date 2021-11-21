@@ -33,9 +33,7 @@ def draw(strip):
   global snake, fruits, direction
 
   # fill background
-  for y in range(PIXEL_HEIGHT):
-    for x in range(PIXEL_WIDTH):
-      strip.set_pixel((x, y), BG_COLOR)
+  strip.fill(BG_COLOR)
   # draw snake
   for i, (x, y) in enumerate(snake):
     color = fade_color(SNAKE_COLOR, 0.5 + (float(len(snake) - i)/(len(snake))) * 0.5 )

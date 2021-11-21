@@ -20,6 +20,20 @@ class Strip(object):
   def __init__(self):
     pass
 
+  def do_loop(self):
+    strip.fill((0, 0, 0))
+    strip.show()
+    pass
+
+  def quit(self):
+    self.fill((0, 0, 0))
+    self.show()
+    pass
+
+  def fill(self, color):
+    for i in range(PIXEL_HEIGHT * PIXEL_WIDTH):
+      self.set_pixel(i, color)
+
   def set_pixel(self, coordinate_or_index, color):
     pass
 
@@ -34,14 +48,20 @@ class VirtualStrip(Strip):
     self.surface = pygame.display.set_mode((PIXEL_WIDTH*PIXEL_DISPLAY_SIZE, PIXEL_HEIGHT*PIXEL_DISPLAY_SIZE))
     self.pixel_colors = [ [(0, 0, 0)]*PIXEL_WIDTH for _ in range(PIXEL_HEIGHT)]
     
-  def shouldQuit(self):
+  def do_loop(self):
     for event in pygame.event.get():
       if (event.type == pygame.QUIT):
-        return True
-    return False
+        raise KeyboardInterrupt
+
+  def quit(self):
+    super()
+    pygame.quit()
 
   def set_pixel(self, coordinate_or_index, color):
-    # this would use for the real pixel
+    if isinstance(coordinate_or_index, int):
+      index = coordinate_or_index
+      self.set_pixel((index % PIXEL_WIDTH, int(index/PIXEL_WIDTH)), color)
+      return
     self.pixel_colors[coordinate_or_index[1]][coordinate_or_index[0]] = color
 
   def show(self):
@@ -51,6 +71,18 @@ class VirtualStrip(Strip):
         left, top = x*PIXEL_DISPLAY_SIZE, y*PIXEL_DISPLAY_SIZE
         self.surface.fill(self.pixel_colors[y][x], rect=(left+PIXEL_DISPLAY_INSET, top+PIXEL_DISPLAY_INSET, PIXEL_DISPLAY_INNER_SIZE, PIXEL_DISPLAY_INNER_SIZE))
     pygame.display.flip()
+
+class LedStrip(Strip):
+  def __init__(self):
+    super(LedStrip, self).__init__()
+    pass
+    
+  def set_pixel(self, coordinate_or_index, color):
+    # this would use for the real pixel
+    pass
+
+  def show(self):
+    pass
 
 if __name__ == "__main__":
   if len(sys.argv) <= 1:
@@ -64,10 +96,10 @@ if __name__ == "__main__":
   strip = VirtualStrip()
   fps_clock = pygame.time.Clock()
 
-  gameLoop = True
-  while gameLoop:
-    if strip.shouldQuit():
-      gameLoop = False
-    draw_module.draw(strip)
-    fps_clock.tick(FPS)
-  pygame.quit()
+  try:
+    while True:
+      strip.do_loop()
+      draw_module.draw(strip)
+      fps_clock.tick(FPS)
+  finally:
+    strip.quit()

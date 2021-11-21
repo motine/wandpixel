@@ -7,9 +7,7 @@ def draw(strip):
   flakes = [(col, (top+0.1) % PIXEL_HEIGHT) for col, top in flakes]
 
   # fill background
-  for y in range(PIXEL_HEIGHT):
-    for x in range(PIXEL_WIDTH):
-      strip.set_pixel((x, y), (30, 0, 0))
+  strip.fill((30, 0, 0))
   # draw flakes
   for col, top in flakes:
     top_int = int(top)
