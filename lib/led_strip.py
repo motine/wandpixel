@@ -1,6 +1,7 @@
-from .strip import Strip
 import rpi_ws281x
 import csv
+from .strip import Strip
+from .engine import PIXEL_WIDTH, PIXEL_HEIGHT
 
 class LedStrip(Strip):
   LED_COUNT      = 350     #  Number of LED pixels.
