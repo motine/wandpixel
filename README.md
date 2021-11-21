@@ -26,9 +26,10 @@ vim yourscript.py
 If you have the actual LED matrix as seen at Tom's house, please also run the following on the raspberry pi:
 
 ```bash
+sudo apt install libsdl2-dev
 sudo python3 -m pip install rpi_ws281x
 touch USE_LEDS # if this file is present, we will not spin up a window, but rather use the actual matrix
-sudo ./engine snowflake
+sudo ./engine.py snowflake
 ```
 
 
