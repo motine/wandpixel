@@ -6,7 +6,9 @@ import importlib
 import sys
 import csv
 from pathlib import Path
-import pygame
+import pygame # we use pygame drawing in a window _and_ running with the right FPS
+if Path("USE_LEDS").is_file():
+  import rpi_ws281x
 
 PIXEL_WIDTH = 14
 PIXEL_HEIGHT = 25
@@ -86,16 +88,8 @@ class LedStrip(Strip):
   LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
   LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-  PIXEL_MAPPING = {
-    0: 0,
-    1: 1,
-    2: 2,
-    3: 4
-  }
-
   def __init__(self):
     super(LedStrip, self).__init__()
-    import rpi_ws281x
     self.read_pixel_mapping()
     self.neopixel = rpi_ws281x.Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL)
     self.neopixel.begin()
@@ -118,7 +112,7 @@ class LedStrip(Strip):
       if not index in self.pixel_mapping:
         return # this is a dead pixel, so we ignore it (e.g. one in the top-right corner)
       real_index = self.pixel_mapping[index]
-      self.neopixel.setPixelColor(real_index, color)
+      self.neopixel.setPixelColor(real_index, rpi_ws281x.Color(*color))
 
     raise TypeError # no idea what to do with coordinate_or_index
 
