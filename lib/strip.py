@@ -18,7 +18,7 @@ class Strip(object):
 
   # coordinate_or_index can either be a tuple or a single int
   # if a tuple is given, we use the format (x, y)
-  # if an int is given, it is up to the derriving Strip class how to layout the pixels (the only guarantee is that 0..width*height-1 is valid)
+  # if an int is given, it is considered from left to right, from top to bottom
   def set_pixel(self, coordinate_or_index, color):
     pass
 

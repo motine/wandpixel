@@ -1,7 +1,7 @@
 from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
 from PIL import Image
 
-# to run this, you need to add pol
+# to run this, you need:
 # python3 -m pip install --upgrade Pillow
 
 FPS = 5 # TODO use 0.2

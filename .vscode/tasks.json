@@ -30,6 +30,12 @@
       "type": "shell",
       "command": "python3 start.py test",
       "problemMatcher": []
+    },
+    {
+      "label": "stars",
+      "type": "shell",
+      "command": "python3 start.py stars",
+      "problemMatcher": []
     }
   ]
 }
