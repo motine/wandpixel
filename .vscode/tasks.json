@@ -36,6 +36,12 @@
       "type": "shell",
       "command": "python3 start.py stars",
       "problemMatcher": []
+    },
+    {
+      "label": "weather",
+      "type": "shell",
+      "command": "python3 start.py weather",
+      "problemMatcher": []
     }
   ]
 }
