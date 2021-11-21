@@ -101,11 +101,11 @@ class LedStrip(Strip):
       for y, row in enumerate(reader):
         for x, cell in enumerate(row):
           if (cell):
-            self.pixel_mapping[y*PIXEL_WIDTH + x] = cell
+           self.pixel_mapping[y*PIXEL_WIDTH + x] = int(cell)
 
   def set_pixel(self, coordinate_or_index, color):
     if (isinstance(coordinate_or_index, tuple) or isinstance(coordinate_or_index, list)):
-      self.set_pixel(coordinate_or_index[1]*PIXEL_WIDTH + coordinate_or_index[0])
+      self.set_pixel(coordinate_or_index[1]*PIXEL_WIDTH + coordinate_or_index[0], color)
       return
     if (isinstance(coordinate_or_index, int)):
       index = coordinate_or_index
@@ -113,6 +113,7 @@ class LedStrip(Strip):
         return # this is a dead pixel, so we ignore it (e.g. one in the top-right corner)
       real_index = self.pixel_mapping[index]
       self.neopixel.setPixelColor(real_index, rpi_ws281x.Color(*color))
+      return
 
     raise TypeError # no idea what to do with coordinate_or_index
 
