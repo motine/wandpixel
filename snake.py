@@ -1,3 +1,4 @@
+from engine import PIXEL_WIDTH, PIXEL_HEIGHT
 import random
 
 FPS = 10
@@ -28,7 +29,7 @@ def fade_color(original, factor):
 
 restart()
 
-def draw(strip, PIXEL_WIDTH, PIXEL_HEIGHT):
+def draw(strip):
   global snake, fruits, direction
 
   # fill background

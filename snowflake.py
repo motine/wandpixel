@@ -1,6 +1,7 @@
+from engine import PIXEL_WIDTH, PIXEL_HEIGHT
 flakes = [(1, 8.0), (5, 0.0)] # column, top
 
-def draw(strip, PIXEL_WIDTH, PIXEL_HEIGHT):
+def draw(strip):
   global flakes
   # move flakes
   flakes = [(col, (top+0.1) % PIXEL_HEIGHT) for col, top in flakes]

@@ -52,6 +52,6 @@ if __name__ == "__main__":
     for event in pygame.event.get():
       if (event.type == pygame.QUIT):
         gameLoop = False
-    draw_module.draw(strip, PIXEL_WIDTH, PIXEL_HEIGHT)
+    draw_module.draw(strip)
     fps_clock.tick(FPS)
   pygame.quit()
