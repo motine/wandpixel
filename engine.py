@@ -101,7 +101,7 @@ class LedStrip(Strip):
       for y, row in enumerate(reader):
         for x, cell in enumerate(row):
           if (cell):
-           self.pixel_mapping[y*PIXEL_WIDTH + x] = int(cell)
+            self.pixel_mapping[y*PIXEL_WIDTH + x] = int(cell)
 
   def set_pixel(self, coordinate_or_index, color):
     if (isinstance(coordinate_or_index, tuple) or isinstance(coordinate_or_index, list)):
