@@ -18,6 +18,12 @@
       "type": "shell",
       "command": "python3 start.py snowflake",
       "problemMatcher": []
+    },
+    {
+      "label": "image",
+      "type": "shell",
+      "command": "python3 start.py image",
+      "problemMatcher": []
     }
   ]
 }
