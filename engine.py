@@ -20,8 +20,8 @@ class Strip:
   def __init__(self):
     self.pixel_colors = [ [(0, 0, 0)]*PIXEL_WIDTH for i in range(PIXEL_HEIGHT)]
 
-  def setPixel(self, x, y, color):
-    # this would use setPixelColor for the real pixel
+  def set_pixel(self, x, y, color):
+    # this would use set_pixelColor for the real pixel
     self.pixel_colors[y][x] = color
 
   def show(self):

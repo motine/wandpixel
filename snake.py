@@ -35,14 +35,14 @@ def draw(strip):
   # fill background
   for y in range(PIXEL_HEIGHT):
     for x in range(PIXEL_WIDTH):
-      strip.setPixel(x, y, BG_COLOR)
+      strip.set_pixel(x, y, BG_COLOR)
   # draw snake
   for i, (x, y) in enumerate(snake):
     color = fade_color(SNAKE_COLOR, 0.5 + (float(len(snake) - i)/(len(snake))) * 0.5 )
-    strip.setPixel(x, y, color)
+    strip.set_pixel(x, y, color)
   # draw fruits
   for x, y in fruits:
-    strip.setPixel(x, y, FRUIT_COLOR)
+    strip.set_pixel(x, y, FRUIT_COLOR)
 
   # move snake
   head = snake[0]

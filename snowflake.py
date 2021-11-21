@@ -9,15 +9,15 @@ def draw(strip):
   # fill background
   for y in range(PIXEL_HEIGHT):
     for x in range(PIXEL_WIDTH):
-      strip.setPixel(x, y, (30, 0, 0))
+      strip.set_pixel(x, y, (30, 0, 0))
   # draw flakes
   for col, top in flakes:
     top_int = int(top)
     decimals = top - top_int
     color_value_upper = int(decimals * 255)
     color_value_lower = int((1-decimals) * 255)
-    strip.setPixel(col, top_int, (color_value_lower, color_value_lower, color_value_lower))
+    strip.set_pixel(col, top_int, (color_value_lower, color_value_lower, color_value_lower))
     if top_int+1 < PIXEL_HEIGHT:
-      strip.setPixel(col, top_int+1, (color_value_upper, color_value_upper, color_value_upper))
+      strip.set_pixel(col, top_int+1, (color_value_upper, color_value_upper, color_value_upper))
 
   strip.show()
