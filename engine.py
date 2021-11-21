@@ -4,8 +4,8 @@
 
 import importlib
 import sys
+from pathlib import Path
 import pygame
-from pygame.locals import *
 
 PIXEL_WIDTH = 14
 PIXEL_HEIGHT = 25
@@ -73,18 +73,32 @@ class VirtualStrip(Strip):
         self.surface.fill(self.pixel_colors[y][x], rect=(left+self.PIXEL_DISPLAY_INSET, top+self.PIXEL_DISPLAY_INSET, self.PIXEL_DISPLAY_INNER_SIZE, self.PIXEL_DISPLAY_INNER_SIZE))
     pygame.display.flip()
 
-
 class LedStrip(Strip):
+  LED_COUNT      = 350     #  Number of LED pixels.
+  LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
+  LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
+  LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
+  LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
+  LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
+  LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+
   def __init__(self):
     super(LedStrip, self).__init__()
-    pass
+    import rpi_ws281x
+    self.neopixel = rpi_ws281x.Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL)
+    self.neopixel.begin()
     
   def set_pixel(self, coordinate_or_index, color):
-    # this would use for the real pixel
-    pass
+    if (isinstance(coordinate_or_index, tuple) or isinstance(coordinate_or_index, list)):
+      self.set_pixel(coordinate_or_index[1]*PIXEL_WIDTH + coordinate_or_index[0])
+      return
+    if (isinstance(coordinate_or_index, int)):
+      # TODO map pixel_index
+      self.neopixel.setPixelColor(coordinate_or_index, color)
+    raise TypeError
 
   def show(self):
-    pass
+    self.neopixel.show()
 
 if __name__ == "__main__":
   if len(sys.argv) <= 1:
@@ -95,7 +109,10 @@ if __name__ == "__main__":
   if hasattr(draw_module, 'FPS'):
     FPS = draw_module.FPS
 
-  strip = VirtualStrip()
+  if Path("USE_LEDS").is_file():
+    strip = LedStrip()
+  else:
+    strip = VirtualStrip()
   fps_clock = pygame.time.Clock()
 
   try:
@@ -103,5 +120,7 @@ if __name__ == "__main__":
       strip.do_loop()
       draw_module.draw(strip)
       fps_clock.tick(FPS)
+  except KeyboardInterrupt:
+    pass
   finally:
     strip.quit()

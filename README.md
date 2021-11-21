@@ -23,6 +23,15 @@ vim yourscript.py
 ./engine.py yourscript
 ```
 
+If you have the actual LED matrix as seen at Tom's house, please also run the following on the raspberry pi:
+
+```bash
+sudo python3 -m pip install rpi_ws281x
+touch USE_LEDS # if this file is present, we will not spin up a window, but rather use the actual matrix
+sudo ./engine snowflake
+```
+
+
 ## Notes on Assembly
 
 - [wiring as seen here](https://core-electronics.com.au/tutorials/ws2812-addressable-leds-raspberry-pi-quickstart-guide.html)
