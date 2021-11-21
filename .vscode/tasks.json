@@ -12,6 +12,12 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "snowflake",
+      "type": "shell",
+      "command": "python3 engine.py snowflake",
+      "problemMatcher": []
     }
   ]
 }
