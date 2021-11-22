@@ -4,6 +4,7 @@
 
 from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
 from PIL import Image, ImageSequence
+import math
 
 FPS = 5
 image_frames = []
@@ -28,9 +29,12 @@ def draw(strip):
   frame = image_frames[current_frame_index]
 
   # draw
+  offset_x = int((PIXEL_WIDTH - frame.width) / 2)
+  offset_y = int(math.ceil((PIXEL_HEIGHT - frame.height) / 2))
   strip.fill((0, 0, 0))
   for i, (r, g, b) in enumerate(frame.getdata()):
-    strip.set_pixel(i, (r, g, b))
+    x, y = i % frame.width, int(i / frame.width)
+    strip.set_pixel((offset_x+x, offset_y+y), (r, g, b))
 
   last_frame_index = current_frame_index
   strip.show()
