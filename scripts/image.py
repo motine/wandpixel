@@ -1,26 +1,24 @@
-from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
-from PIL import Image
-
+# NOTE
 # to run this, you need:
 # python3 -m pip install --upgrade Pillow
 
-FPS = 5 # TODO use 0.2
-IMAGE_PATH = 'images/mario.png'
-IMAGE_PATH = 'images/mario.gif'
-# IMAGE_PATH = 'images/fire.gif'
+from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
+from PIL import Image, ImageSequence
 
-im = Image.open(IMAGE_PATH)
-
-from PIL import ImageSequence
-
+FPS = 5
 image_frames = []
-for frame in ImageSequence.Iterator(im):
-  frame = frame.copy()
-  frame.thumbnail((PIXEL_WIDTH, PIXEL_HEIGHT), resample=Image.HAMMING) # modifies the Image object in place
-  frame = frame.convert("RGB")
-  image_frames.append(frame)
-
 last_frame_index = 0
+
+def init(strip, args):
+  if not args:
+    raise f"please specify an image"
+  im = Image.open(args[0])
+
+  for frame in ImageSequence.Iterator(im):
+    frame = frame.copy()
+    frame.thumbnail((PIXEL_WIDTH, PIXEL_HEIGHT), resample=Image.HAMMING) # modifies the Image object in place
+    frame = frame.convert("RGB")
+    image_frames.append(frame)
 
 def draw(strip):
   global image_frames, last_frame_index

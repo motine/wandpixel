@@ -19,12 +19,11 @@ parser.add_argument('script_args', nargs='*')
 parser.add_argument('--brightness', type=int, default=255)
 args = parser.parse_args()
 
-# SCRIPT_ARGS = args.script_args
-
 if __name__ == "__main__":
   strip_class = LedStrip if USE_LED else VirtualStrip
-  draw_module = importlib.import_module(f"scripts.{args.script}")
-  fps = draw_module.FPS if hasattr(draw_module, 'FPS') else DEFAULT_FPS
+  script_module = importlib.import_module(f"scripts.{args.script}")
+  fps = script_module.FPS if hasattr(script_module, 'FPS') else DEFAULT_FPS
+  init_method = script_module.init if hasattr(script_module, 'init') else None
 
-  lib.engine.run(strip_class, draw_module.draw, fps, args.brightness)
+  lib.engine.run(strip_class, script_module.draw, init_method, fps, args.brightness, args.script_args)
 
