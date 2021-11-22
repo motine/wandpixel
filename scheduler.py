@@ -6,8 +6,8 @@ from datetime import time, datetime
 
 TIME_TABLE = [
   # make sure that the time table is ordered ascending!
-  (time(10, 00), './start.py weather'),
-  (time(11, 00), './start.py stars'),
+  (time(10, 00), './start.py --brightness 100 weather'),
+  (time(11, 00), './start.pystars'),
   (time(18, 00), './start.py stars')
   (time(22, 00), None),
 ]

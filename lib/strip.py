@@ -1,7 +1,7 @@
 from .engine import PIXEL_WIDTH, PIXEL_HEIGHT
 
 class Strip(object):
-  def __init__(self):
+  def __init__(self, brightness):
     pass
 
   def do_loop(self):

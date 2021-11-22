@@ -4,8 +4,8 @@ PIXEL_WIDTH = 14
 PIXEL_HEIGHT = 25
 
 
-def run(strip_class, draw_method, fps):
-  strip = strip_class()
+def run(strip_class, draw_method, fps, brightness):
+  strip = strip_class(brightness)
   fps_clock = pygame.time.Clock()
 
   try:

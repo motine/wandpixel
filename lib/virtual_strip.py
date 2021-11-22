@@ -8,8 +8,8 @@ class VirtualStrip(Strip):
   PIXEL_DISPLAY_INNER_SIZE = PIXEL_DISPLAY_SIZE - 2*PIXEL_DISPLAY_INSET
   BACKGROUND_COLOR = (35, 35, 35)
 
-  def __init__(self):
-    super(VirtualStrip, self).__init__()
+  def __init__(self, brightness):
+    super(VirtualStrip, self).__init__(brightness)
     pygame.init()
     pygame.display.set_caption("Wandpixel")
     self.surface = pygame.display.set_mode((PIXEL_WIDTH*self.PIXEL_DISPLAY_SIZE, PIXEL_HEIGHT*self.PIXEL_DISPLAY_SIZE))
