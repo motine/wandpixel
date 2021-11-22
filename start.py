@@ -18,7 +18,7 @@ if __name__ == "__main__":
     sys.exit(1)
 
   strip_class = LedStrip if USE_LED else VirtualStrip
-  draw_module = importlib.import_module(sys.argv[1])
+  draw_module = importlib.import_module(f"scripts.{sys.argv[1]}")
   fps = draw_module.FPS if hasattr(draw_module, 'FPS') else DEFAULT_FPS
 
   lib.engine.run(strip_class, draw_module.draw, fps)
