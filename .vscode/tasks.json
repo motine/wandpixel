@@ -42,6 +42,12 @@
       "type": "shell",
       "command": "python3 start.py weather",
       "problemMatcher": []
+    },
+    {
+      "label": "pulse",
+      "type": "shell",
+      "command": "python3 start.py pulse",
+      "problemMatcher": []
     }
   ]
 }
