@@ -4,12 +4,15 @@ from .strip import Strip
 from .engine import PIXEL_WIDTH, PIXEL_HEIGHT
 
 class LedStrip(Strip):
-  LED_COUNT      = 350     #  Number of LED pixels.
-  LED_PIN        = 18      # GPIO pin connected to the pixels (18 uses PWM!).
-  LED_FREQ_HZ    = 800000  # LED signal frequency in hertz (usually 800khz)
-  LED_DMA        = 10      # DMA channel to use for generating signal (try 10)
-  LED_INVERT     = False   # True to invert the signal (when using NPN transistor level shift)
-  LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+  LED_COUNT        = 350     #  Number of LED pixels.
+  LED_PIN          = 18      # GPIO pin connected to the pixels (18 uses PWM!).
+  LED_FREQ_HZ      = 800000  # LED signal frequency in hertz (usually 800khz)
+  LED_DMA          = 10      # DMA channel to use for generating signal (try 10)
+  LED_INVERT       = False   # True to invert the signal (when using NPN transistor level shift)
+  LED_CHANNEL      = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
+  # COLOR_CORRECTION = (1.0, 0.69, 0.94) # values adapted from https://github.com/FastLED/FastLED/blob/master/src/color.h
+  # COLOR_CORRECTION = (1.0, 0.6, 0.7)
+  COLOR_CORRECTION = (1.0, 0.5, 0.6)
 
   def __init__(self, brightness):
     super(LedStrip, self).__init__(brightness)
@@ -35,10 +38,16 @@ class LedStrip(Strip):
       if not index in self.pixel_mapping:
         return # this is a dead pixel, so we ignore it (e.g. one in the top-right corner)
       real_index = self.pixel_mapping[index]
-      self.neopixel.setPixelColor(real_index, rpi_ws281x.Color(*color))
+      self.neopixel.setPixelColor(real_index, rpi_ws281x.Color(*self.correct_color(color)))
       return
 
     raise TypeError # no idea what to do with coordinate_or_index
+
+  def correct_color(self, rgb):
+    return [int(component * self.COLOR_CORRECTION[i]) for i, component in enumerate(rgb)] # dot product
+    
+    
+
 
   def show(self):
     self.neopixel.show()
