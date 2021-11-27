@@ -10,9 +10,6 @@ class LedStrip(Strip):
   LED_DMA          = 10      # DMA channel to use for generating signal (try 10)
   LED_INVERT       = False   # True to invert the signal (when using NPN transistor level shift)
   LED_CHANNEL      = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
-  # COLOR_CORRECTION = (1.0, 0.69, 0.94) # values adapted from https://github.com/FastLED/FastLED/blob/master/src/color.h
-  # COLOR_CORRECTION = (1.0, 0.6, 0.7)
-  COLOR_CORRECTION = (1.0, 0.5, 0.6)
 
   def __init__(self, brightness):
     super(LedStrip, self).__init__(brightness)
@@ -44,10 +41,15 @@ class LedStrip(Strip):
     raise TypeError # no idea what to do with coordinate_or_index
 
   def correct_color(self, rgb):
-    return [int(component * self.COLOR_CORRECTION[i]) for i, component in enumerate(rgb)] # dot product
+    # simple linear approach
+    # COLOR_CORRECTION = (1.0, 0.5, 0.)
+    # return [int(component * self.COLOR_CORRECTION[i]) for i, component in enumerate(rgb)] # dot product
     
-    
-
+    r, g, b = rgb
+    cr = ((r / 255.0) ** 2) * 254
+    cg = ((g / 255.0) ** 3) * 255
+    cb = ((b / 255.0) ** 5) * 150
+    return (int(cr), int(cg), int(cb))
 
   def show(self):
     self.neopixel.show()
