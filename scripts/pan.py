@@ -9,7 +9,7 @@ import random
 FPS = 10
 DIRECTION_RAND = 0.05
 DIRECTION_MAX = 0.5
-WINDOW_FACTOR = 5 # size of the window we crop out of the image before we size it down
+WINDOW_FACTOR = 20 # size of the window we crop out of the image before we size it down
 WINDOW_WIDTH = PIXEL_WIDTH * WINDOW_FACTOR
 WINDOW_HEIGHT = PIXEL_HEIGHT * WINDOW_FACTOR
 image = None
