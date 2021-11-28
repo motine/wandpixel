@@ -48,6 +48,12 @@
       "type": "shell",
       "command": "python3 start.py pulse",
       "problemMatcher": []
+    },
+    {
+      "label": "pan",
+      "type": "shell",
+      "command": "python3 start.py pan images/dhali.png",
+      "problemMatcher": []
     }
   ]
 }
