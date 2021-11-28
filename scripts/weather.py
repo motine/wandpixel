@@ -114,7 +114,7 @@ def fetch_temperature():
   global temperature, last_temperature_fetch
   with urllib.request.urlopen("http://wttr.in/Berlin?format=\"%t\"") as f:
     conditions_string = f.read().decode('utf-8')
-    temperature = -int(re.sub('[^\d\-]', '', conditions_string))
+    temperature = int(re.sub('[^\d\-]', '', conditions_string))
     last_temperature_fetch = datetime.now()
 
 fetch_temperature()
