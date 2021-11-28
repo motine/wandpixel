@@ -6,15 +6,15 @@ from datetime import time, datetime
 
 TIME_TABLE = [
   # make sure that the time table is ordered ascending!
-  (time(10, 00), './start.py --brightness 100 weather'),
-  (time(11, 00), './start.py image images/fire.gif'),
-  (time(18, 00), './start.py stars')
-  (time(22, 00), None),
+  (time(6, 30), './start.py pan images/littlevillage.jpg'),
+  (time(8, 30), './start.py --brightness 20 weather'),
+  (time(15, 30), './start.py --brightness 100 pan images/littlevillage.jpg'),
+  (time(20, 30), './start.py --brightness 50 pan images/littlevillage.jpg'),
+  (time(23, 00), None),
 ]
 
 current_process = None
 last_time_table_item = None
-
 
 try:
   while True:
