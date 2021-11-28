@@ -43,6 +43,4 @@ def draw(strip):
   direction[0] = max(-DIRECTION_MAX, min(DIRECTION_MAX, direction[0])) # cap
   direction[1] = max(-DIRECTION_MAX, min(DIRECTION_MAX, direction[1]))
 
-  print(direction[0], direction[1])
-
   strip.show()
