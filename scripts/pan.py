@@ -37,7 +37,7 @@ def draw(strip):
 
   offset[0] = (offset[0] + direction[0]) % (image.width - PIXEL_WIDTH)
   offset[1] = (offset[1] + direction[1]) % (image.height - PIXEL_HEIGHT)
-  print(offset[0], offset[1])
+
   direction[0] += random.uniform(-DIRECTION_RAND, DIRECTION_RAND) # randomize
   direction[1] += random.uniform(-DIRECTION_RAND, DIRECTION_RAND)
   direction[0] = max(-DIRECTION_MAX, min(DIRECTION_MAX, direction[0])) # cap
