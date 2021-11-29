@@ -5,7 +5,7 @@ import numpy as np
 # this script needs numpy:
 # python3 -m pip install --upgrade numpy
 
-FPS = 10
+FPS = 6
 
 def update(cur):
     nxt = np.zeros((cur.shape[0], cur.shape[1]))
@@ -32,7 +32,7 @@ def restart():
     generate()
 
 def draw(strip):
-    global old_grid
+    global old_grid, new_grid
     strip.fill((0, 0, 0))
     new_grid = update(old_grid)
     draw_grid(strip, new_grid)

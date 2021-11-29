@@ -54,6 +54,12 @@
       "type": "shell",
       "command": "python3 start.py pan images/dhali.png",
       "problemMatcher": []
+    },
+    {
+      "label": "gol",
+      "type": "shell",
+      "command": "python3 start.py game_of_life",
+      "problemMatcher": []
     }
   ]
 }
