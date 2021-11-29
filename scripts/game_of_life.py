@@ -1,5 +1,9 @@
+# thanks Dario for sponsoring this!
 from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
 import numpy as np
+
+# this script needs numpy:
+# python3 -m pip install --upgrade numpy
 
 FPS = 10
 
@@ -28,7 +32,7 @@ def restart():
     generate()
 
 def draw(strip):
-    global old_grid, new_grid
+    global old_grid
     strip.fill((0, 0, 0))
     new_grid = update(old_grid)
     draw_grid(strip, new_grid)
