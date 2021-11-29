@@ -47,9 +47,7 @@ sudo ./start.py snowflake
 
 ![](media/01-depth-test.jpg)
 ![](media/02-prototype.jpg)
-[prototype video](media/02-prototype.mov)
 ![](media/03-rpi.jpg)
-[rpi video](media/03-rpi.mov)
 ![](media/04-edge.jpeg)
 ![](media/04-plan.jpeg)
 ![](media/04-saw.jpeg)
@@ -58,5 +56,8 @@ sudo ./start.py snowflake
 ![](media/07.jpeg)
 ![](media/08.jpeg)
 ![](media/08.mov)
-[snake video](media/09-snake.mov)
 ![](media/09.jpeg)
+
+- [prototype video](media/02-prototype.mov)
+- [rpi video](media/03-rpi.mov)
+- [snake video](media/09-snake.mov)
