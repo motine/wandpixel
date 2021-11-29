@@ -43,3 +43,20 @@ sudo ./start.py snowflake
 - then install python package [rpi3-ws2812b](https://raw.githubusercontent.com/coreelectronics/scripts/master/rpi3-ws2812b) (maybe uninstall package and reinstall)
 - follow instructions for PMW: https://github.com/jgarff/rpi_ws281x
 
+## Impressions
+
+![](media/01-depth-test.jpg)
+![](media/02-prototype.jpg)
+[prototype video](media/02-prototype.mov)
+![](media/03-rpi.jpg)
+[rpi video](media/03-rpi.mov)
+![](media/04-edge.jpeg)
+![](media/04-plan.jpeg)
+![](media/04-saw.jpeg)
+![](media/05.jpeg)
+![](media/06.jpeg)
+![](media/07.jpeg)
+![](media/08.jpeg)
+![](media/08.mov)
+[snake video](media/09-snake.mov)
+![](media/09.jpeg)

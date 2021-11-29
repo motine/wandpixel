@@ -4,6 +4,7 @@ import numpy as np
 
 # this script needs numpy:
 # python3 -m pip install --upgrade numpy
+# apt install libatlas-base-dev
 
 FPS = 6
 
