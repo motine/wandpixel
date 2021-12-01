@@ -7,10 +7,10 @@ from datetime import time, datetime
 
 TIME_TABLE = [
   # make sure that the time table is ordered ascending!
-  (time(6, 30), './start.py pan images/littlevillage.jpg'),
+  (time(6, 30), './start.py pan images/art/*'),
   (time(8, 30), './start.py --brightness 20 weather'),
-  (time(15, 30), './start.py --brightness 255 pan images/littlevillage.jpg'),
-  (time(20, 30), './start.py --brightness 50 pan images/littlevillage.jpg'),
+  (time(15, 30), './start.py --brightness 255 pan images/art/*'),
+  (time(20, 30), './start.py --brightness 50 pan images/art/*'),
   (time(23, 0), None),
 ]
 
