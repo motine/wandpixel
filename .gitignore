@@ -1,1 +1,4 @@
 .DS_Store
+USE_LEDS
+__pycache__
+nohup.out
