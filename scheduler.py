@@ -10,7 +10,7 @@ TIME_TABLE = [
   (time(6, 30), './start.py pan images/art/*'),
   (time(8, 30), './start.py --brightness 20 weather'),
   (time(15, 30), './start.py --brightness 255 pan images/art/*'),
-  (time(20, 30), './start.py --brightness 50 pan images/art/*'),
+  (time(20, 0), './start.py --brightness 150 image images/fire.gif'),
   (time(23, 0), None),
 ]
 
