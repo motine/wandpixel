@@ -9,7 +9,7 @@ t = 0.0
 def draw(strip):
   global t
 
-  t += 0.03
+  t += 0.015
   phase1 = abs(math.sin(t))
   phase2 = 0.8 * abs(math.sin(t*1.2))
   phase3 = 0.5 * abs(math.sin(t*1.4))
