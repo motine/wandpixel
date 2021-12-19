@@ -60,6 +60,12 @@
       "type": "shell",
       "command": "python3 start.py game_of_life",
       "problemMatcher": []
+    },
+    {
+      "label": "bilin",
+      "type": "shell",
+      "command": "python3 start.py bilin",
+      "problemMatcher": []
     }
   ]
 }
