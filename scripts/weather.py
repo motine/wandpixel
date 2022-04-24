@@ -1,4 +1,5 @@
 import re
+import json
 import urllib.request
 from datetime import datetime
 from lib.engine import PIXEL_WIDTH, PIXEL_HEIGHT
@@ -112,9 +113,8 @@ last_temperature_fetch = datetime(2000, 1, 1)
 
 def fetch_temperature():
   global temperature, last_temperature_fetch
-  with urllib.request.urlopen("http://wttr.in/Berlin?format=\"%t\"") as f:
-    conditions_string = f.read().decode('utf-8')
-    temperature = int(re.sub('[^\d\-]', '', conditions_string))
+  with urllib.request.urlopen("https://api.openweathermap.org/data/2.5/weather?appid=4730ed0a342748c9e5f91afea055e231&units=metric&lat=52.604734&lon=13.478347") as f:
+    temperature = int(json.loads(f.read())['main']['temp'])
     last_temperature_fetch = datetime.now()
 
 fetch_temperature()
@@ -131,5 +131,5 @@ def draw(strip):
   # global number
   # draw_number(-number, strip, (PIXEL_WIDTH - 3, PIXEL_HEIGHT - 6), (255, 255, 255), add_degree=True)
   # number = (number + 1) % 50
-  
+
   strip.show()
